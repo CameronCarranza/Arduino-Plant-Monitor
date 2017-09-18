@@ -37,6 +37,7 @@ app.get('/devices/:device_key', async (req, res, next) => {
 // Post Data to a Single Device
 app.post('/devices/:device_key', async (req, res, next) => {
 
+    // Require sensorData parameter
     if ( ! req.body.sensorData) {
         res.send({
             status: false,
@@ -45,6 +46,7 @@ app.post('/devices/:device_key', async (req, res, next) => {
         return false;
     }
 
+    // Limit of sensors (current maximum is 8 with a multiplexer)
     let sensorLimit = 8;
 
     // Get Sensor Values
@@ -61,6 +63,7 @@ app.post('/devices/:device_key', async (req, res, next) => {
     // Add API Key to end of array
     sensorData.push(req.params.device_key);
 
+    // Update Device info
     try {
         await Promise.all([
             db.run(
