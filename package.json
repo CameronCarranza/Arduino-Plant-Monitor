@@ -1,0 +1,11 @@
+{
+  "name": "plant-monitor",
+  "version": "1.0.0",
+  "description": "Plant Monitoring API for Arduino data submissions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Cameron Carranza",
+  "license": "MIT"
+}
