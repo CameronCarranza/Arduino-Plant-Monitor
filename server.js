@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.get('/', async (req, res, next) => {
     try {
         const devices = await Promise.all([
-            db.all('SELECT * FROM Devices')
+            db.all('SELECT location, description, sensor1, sensor2, sensor3, sensor4, sensor5, sensor6, sensor7, sensor8 FROM Devices')
         ]);
         res.send(devices);
     } catch (err) {
@@ -26,7 +26,7 @@ app.get('/', async (req, res, next) => {
 app.get('/devices/:device_key', async (req, res, next) => {
     try {
         const device = await Promise.all([
-            db.get('SELECT * FROM Devices WHERE device_key = ?', req.params.device_key)
+            db.get('SELECT location, description, sensor1, sensor2, sensor3, sensor4, sensor5, sensor6, sensor7, sensor8 FROM Devices WHERE device_key = ?', req.params.device_key)
         ]);
         res.send(device);
     } catch (err) {
@@ -67,8 +67,16 @@ app.post('/devices/:device_key', async (req, res, next) => {
     try {
         await Promise.all([
             db.run(
-                'UPDATE Devices SET sensor1 = ?, sensor2 = ?, sensor3 = ?, sensor4 = ?, sensor5 = ?, sensor6 = ?, sensor7 = ?, sensor8 = ? WHERE device_key = ?',
-                sensorData
+                'UPDATE Devices SET \
+                    sensor1 = ?, \
+                    sensor2 = ?, \
+                    sensor3 = ?, \
+                    sensor4 = ?, \
+                    sensor5 = ?, \
+                    sensor6 = ?, \
+                    sensor7 = ?, \
+                    sensor8 = ? \
+                    WHERE device_key = ?', sensorData
             ),
         ]);
         res.send({
