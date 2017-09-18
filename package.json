@@ -4,13 +4,21 @@
   "description": "Plant Monitoring API for Arduino data submissions",
   "main": "server.js",
   "scripts": {
-    "development": "node server.js",
+    "development": "babel-node server.js --presets es2015,stage-2",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cameron Carranza",
   "license": "MIT",
   "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.18.1",
     "express": "^4.15.4",
+    "sqlite": "^2.8.0",
     "sqlite3": "^3.1.11"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1"
   }
 }
