@@ -2,10 +2,15 @@
   "name": "plant-monitor",
   "version": "1.0.0",
   "description": "Plant Monitoring API for Arduino data submissions",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
+    "development": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Cameron Carranza",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4",
+    "sqlite3": "^3.1.11"
+  }
 }
