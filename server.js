@@ -37,8 +37,8 @@ app.get('/devices/:device_key', async (req, res, next) => {
 // Post Data to a Single Device
 app.post('/devices/:device_key', async (req, res, next) => {
 
-    // Require sensorData parameter
-    if ( ! req.body.sensorData) {
+    // Require sensorData parameter and ensure it is passed as application/json.
+    if ( ! req.body.sensorData || typeof req.body.sensorData !== "object" ) {
         res.send({
             status: false,
             error: "No Sensor Data provided."
@@ -50,7 +50,7 @@ app.post('/devices/:device_key', async (req, res, next) => {
     let sensorLimit = 8;
 
     // Get Sensor Values
-    let sensorData = Object.values(JSON.parse(req.body.sensorData));
+    let sensorData = Object.values(req.body.sensorData);
     sensorData = sensorData.filter(Number);
     sensorData = sensorData.slice(0, sensorLimit);
 
