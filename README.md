@@ -29,5 +29,6 @@ If you are using a multiplexer with a single analog input, use the `plant_monito
 * Edit `s0`, `s1`, and `s2` to match your digital selection pins.
 * Update your AnalogSensor Pin if not using the Adafruit 2821.
 
+![Image of Adafruit 2821 Diagram](https://i.imgur.com/GyrQTR3.png)
 ![Image of Adafruit 2821 with Two Sensors, Battery, and Multiplexer](https://i.imgur.com/yQgRmrL.jpg)
 
